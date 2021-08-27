@@ -1,0 +1,73 @@
+<style type='text/css'>
+    .header {
+        text-align: center;
+        color: black;
+        padding-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td,
+    th {
+        border: 1px solid gray;
+        font-size: 22px;
+        text-align: center;
+    }
+
+    table th {
+        background-color: #132639;
+        color: white;
+    }
+</style>
+
+<html>
+
+<body>
+    <div class='header'>
+        <h3>Day Report - <%= record.title %></h3>
+    </div>
+    <table align='center'>
+        <tr>
+            <th>#</th>
+            <th>Loan Number</th>
+            <th style='width:200px'>Name</th>
+            <th style='width:300px'>End date</th>
+            <th>Daily payment</th>
+            <th>Receipt</th>
+            <th>Collection</th>
+            <th>Arrears</th>
+            <th>Balance</th>
+        </tr>
+
+        <% record.records.forEach(function(record, index) {%>
+        <tr>
+            <td><%= index+1 %></td>
+            <td><%= record.LoanNumber %></td>
+            <td style='width:200px'><%= record.Name %></td>
+            <td style='width:300px'><%= record.EndDate %></td>
+            <td><%= record.DailyPayment %></td>
+            <td><%= record.ReceiptNumber %></td>
+            <td><%= record.Collection %></td>
+            <td><%= record.Arrears %></td>
+            <td><%= record.BalanceCarryForward %></td>
+        </tr>
+        <%  });%>
+
+        <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td style='width:200px'></td>
+            <td style='width:300px'></td>
+            <td></td>
+            <td></td>
+            <td><b><%= record.totalCollection %></b></td>
+            <td><b><%= record.totalArrears %></b></td>
+            <td><b><%= record.totalBalance %></b></td>
+        </tr>
+    </table>
+</body>
+
+</html>
